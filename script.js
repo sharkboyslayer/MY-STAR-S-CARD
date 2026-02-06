@@ -6,13 +6,13 @@ const config = {
       text: "Do you love me?",
       yesBtn: "Yes",
       noBtn: "No..",
-      secretAnswer: "One out of the many reasons I love you. You shine like the brightest star in the nightsky and help guide souls to need help or comfort."
+      secretAnswer: "One out of the many reasons I love you. You shine like the brightest star in the night'sky and help guide souls who need help or comfort."
     },
     {
       text: "How much do you love me?(๑>◡<๑)",
       yesBtn: "Very much!",
       noBtn: "as much as I love my big toe",
-      secretAnswer: "You and everything about you is cheerful and calming nonetheless. Like a beautiful field of flowers in sprin."
+      secretAnswer: "You and everything about you is cheerful and calming nonetheless. Like a beautiful field of flowers in spring."
     },
     {
       text: "Would maybe...possibly answer my next question for me?ꉂ(˵˃ ᗜ ˂˵)",
@@ -24,7 +24,7 @@ const config = {
       text: "Will you be my Valentine...?",
       yesBtn: "Yes!",
       noBtn: "No",
-      secretAnswer: "Yay! I'm the luckiest person..."
+      secretAnswer: "I'm the luckiest person 'dances'."
     }
   ],
   floatingEmojis: ['❤︎', 'ꉂ(˵˃ ᗜ ˂˵)', '۶ৎ', '💗', '❀', '🧸', '🪼'],
