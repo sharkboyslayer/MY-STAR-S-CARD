@@ -1,5 +1,30 @@
-valentine/
-│
-├── index.html
-├── style.css
-└── script.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine? ♡</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="floating-container"></div>
+  <div class="container">
+    <h1 id="questionText">Will you be my Valentine?</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+    <div id="hiddenMessage" class="hidden"></div>
+    <div id="loveMeterMessage" class="hidden"></div>
+    <div id="celebration" class="hidden">
+      <h2 id="celebrationTitle"></h2>
+      <p id="celebrationMessage"></p>
+      <div id="celebrationEmojis"></div>
+    </div>
+    <button id="musicBtn" class="music-btn hidden">🎵 Play Music</button>
+    <audio id="bgMusic" loop></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
