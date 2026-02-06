@@ -15,7 +15,7 @@ const config = {
       secretAnswer: "You and everything about you is delicate, happy and calming. Like a beautiful field of flowers in spring."
     },
     {
-      text: "Would maybe...possibly answer my next question for me?ꉂ(˵˃ ᗜ ˂˵)",
+      text: "Would you maybe...possibly answer my next question for me?ꉂ(˵˃ ᗜ ˂˵)",
       yesBtn: "Yes ofc!",
       noBtn: "No..never you stinky person..ew",
       secretAnswer: "Another out of many of the reasons I love you. You're such a beautiful and radiant soul. I wish that we keep meeting in our different lifetimes."
@@ -24,7 +24,7 @@ const config = {
       text: "Will you be my Valentine...?",
       yesBtn: "Yes!",
       noBtn: "No",
-      secretAnswer: "I'm the luckiest person 'dances'."
+      secretAnswer: "I'm the luckiest person ever 'dances'."
     }
   ],
   floatingEmojis: ['❤︎', 'ꉂ(˵˃ ᗜ ˂˵)', '۶ৎ', '💗', '❀', '🧸', '🪼'],
