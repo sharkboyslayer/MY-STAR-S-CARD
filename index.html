@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Be My Valentine? ♡</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? ♡</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="background"></div>
-
-  <div class="container">
-    <h1 id="question-title">Do you love me?</h1>
-    <div class="buttons">
-      <button id="yes-btn">Yes</button>
-      <button id="no-btn">No..</button>
-    </div>
-    <div id="hidden-message"></div>
-    <button id="next-btn" style="display:none;">Next</button>
-    <div id="music-controls" style="margin-top: 20px;">
-      <button id="music-btn">🎵 Play Music</button>
-      <audio id="bg-music" loop>
-        <source src="https://res.cloudinary.com/dx6ryp7rl/video/upload/v1770355133/Cults_-_Always_Forever_a_l_b_u_m_-_Static__mp3.pm_qfyi5i.mp3" type="audio/mpeg">
-      </audio>
-    </div>
+<div class="container">
+  <h1 id="questionTitle">Will you be my Valentine, MYA?</h1>
+  <div id="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No..</button>
   </div>
+  <p id="hiddenMessage"></p>
+</div>
 
-  <script src="script.js"></script>
+<!-- Floating Emojis -->
+<div id="floatingEmojis"></div>
+
+<!-- Music Controls -->
+<div id="musicControls">
+  <button id="musicBtn">🎵 Play Music</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
