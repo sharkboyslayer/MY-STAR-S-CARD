@@ -12,7 +12,7 @@ const config = {
       text: "How much do you love me?(๑>◡<๑)",
       yesBtn: "Very much!",
       noBtn: "as much as I love my big toe",
-      secretAnswer: "You and everything about you is cheerful and calming nonetheless. Like a beautiful field of flowers in spring."
+      secretAnswer: "You and everything about you is delicate, happy and calming. Like a beautiful field of flowers in spring."
     },
     {
       text: "Would maybe...possibly answer my next question for me?ꉂ(˵˃ ᗜ ˂˵)",
