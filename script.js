@@ -1,11 +1,6 @@
-// ------------------ CONFIG ------------------
+// Configuration
 const config = {
   valentineName: "MYA",
-  pageTitle: "Will You Be My Valentine? ♡",
-  floatingEmojis: {
-    heartsAndEmojicons: ['❤︎', 'ꉂ(˵˃ ᗜ ˂˵)', '۶ৎ', '💗', '❀'],
-    animals: ['🧸', '🪼']
-  },
   questions: [
     {
       text: "Do you love me?",
@@ -16,144 +11,106 @@ const config = {
     {
       text: "How much do you love me?(๑>◡<๑)",
       yesBtn: "Very much!",
-      noBtn: "as much as I love my big toe"
+      noBtn: "as much as I love my big toe",
+      secretAnswer: "Wow, that's super cute!"
     },
     {
       text: "Would maybe...possibly answer my next question for me?ꉂ(˵˃ ᗜ ˂˵)",
       yesBtn: "Yes ofc!",
       noBtn: "No..never you stinky person..ew",
-      secretAnswer: "Another out of many of the reasons I love you. You're such a beautiful and radient soul. I wish that we keep meeting in our different lifetimes."
+      secretAnswer: "Another out of many of the reasons I love you. You're such a beautiful and radiant soul. I wish that we keep meeting in our different lifetimes."
     },
     {
       text: "Will you be my Valentine...?",
       yesBtn: "Yes!",
-      noBtn: "No"
+      noBtn: "No",
+      secretAnswer: "Yay! I'm the luckiest person..."
     }
   ],
-  loveMessages: {
-    extreme: "WOOOOW You love me that much? (๑>◡<๑)",
-    high: "I the evermost greatful for your love and caring.",
-    normal: "You forever dazzle me my star"
-  },
-  celebration: {
-    title: "Yay! I'm the luckiest person...",
-    message: "Thank you so much for gracing my life with your presence and light.",
-    emojis: "💐🌸💞💗💋🫂"
-  },
-  colors: {
-    backgroundStart: "#EC6ABE",
-    backgroundEnd: "#FDE09C",
-    buttonBackground: "#ff6b6b",
-    buttonHover: "#420C14",
-    textColor: "#DB2955"
-  },
-  animations: {
-    floatDuration: 15, // seconds
-    floatDistance: 50
-  },
-  music: {
-    enabled: true,
-    autoplay: true,
-    musicUrl: "https://res.cloudinary.com/dx6ryp7rl/video/upload/v1770355133/Cults_-_Always_Forever_a_l_b_u_m_-_Static__mp3.pm_qfyi5i.mp3",
-    startText: "🎵 Play Music",
-    stopText: "🔇 Stop Music",
-    volume: 0.5
-  },
+  floatingEmojis: ['❤︎', 'ꉂ(˵˃ ᗜ ˂˵)', '۶ৎ', '💗', '❀', '🧸', '🪼'],
+  musicUrl: "https://res.cloudinary.com/dx6ryp7rl/video/upload/v1770355133/Cults_-_Always_Forever_a_l_b_u_m_-_Static__mp3.pm_qfyi5i.mp3",
 };
 
-// ------------------ VARIABLES ------------------
+// State
 let currentQuestion = 0;
-const questionText = document.getElementById("questionText");
+const questionTitle = document.getElementById("questionTitle");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const hiddenMessageDiv = document.getElementById("hiddenMessage");
-const loveMeterMessageDiv = document.getElementById("loveMeterMessage");
-const celebrationDiv = document.getElementById("celebration");
-const celebrationTitle = document.getElementById("celebrationTitle");
-const celebrationMessage = document.getElementById("celebrationMessage");
-const celebrationEmojis = document.getElementById("celebrationEmojis");
-const floatingContainer = document.querySelector(".floating-container");
+const hiddenMessage = document.getElementById("hiddenMessage");
+
+// Music
+const audio = new Audio(config.musicUrl);
+let musicPlaying = false;
 const musicBtn = document.getElementById("musicBtn");
-const bgMusic = document.getElementById("bgMusic");
-
-// ------------------ FLOATING EMOJIS ------------------
-function createFloatingEmoji(char) {
-  const emoji = document.createElement("div");
-  emoji.textContent = char;
-  emoji.classList.add("floating-emoji");
-  emoji.style.left = Math.random() * window.innerWidth + "px";
-  emoji.style.animationDuration = `${config.animations.floatDuration + Math.random() * 5}s`;
-  floatingContainer.appendChild(emoji);
-}
-
-// Add floating emojis
-[...config.floatingEmojis.heartsAndEmojicons, ...config.floatingEmojis.animals].forEach(emoji => {
-  for (let i = 0; i < 5; i++) createFloatingEmoji(emoji);
-});
-
-// ------------------ QUESTIONS ------------------
-function showQuestion(index) {
-  if (index >= config.questions.length) {
-    showCelebration();
-    return;
+musicBtn.addEventListener("click", () => {
+  if (!musicPlaying) {
+    audio.volume = 0.5;
+    audio.play();
+    musicBtn.textContent = "🔇 Stop Music";
+  } else {
+    audio.pause();
+    musicBtn.textContent = "🎵 Play Music";
   }
-  const q = config.questions[index];
-  questionText.textContent = q.text;
-  yesBtn.textContent = q.yesBtn || "Yes";
-  noBtn.textContent = q.noBtn || "No";
-  hiddenMessageDiv.classList.add("hidden");
-}
-
-function showHiddenMessage(message) {
-  hiddenMessageDiv.textContent = message;
-  hiddenMessageDiv.classList.remove("hidden");
-  setTimeout(() => hiddenMessageDiv.classList.add("hidden"), 12000); // hide after 12 seconds
-}
-
-function nextQuestion(delay = 0) {
-  setTimeout(() => {
-    currentQuestion++;
-    showQuestion(currentQuestion);
-  }, delay);
-}
-
-function showCelebration() {
-  celebrationTitle.textContent = config.celebration.title;
-  celebrationMessage.textContent = config.celebration.message;
-  celebrationEmojis.textContent = config.celebration.emojis;
-  celebrationDiv.classList.remove("hidden");
-  yesBtn.style.display = "none";
-  noBtn.style.display = "none";
-}
-
-// ------------------ EVENT LISTENERS ------------------
-yesBtn.addEventListener("click", () => {
-  const q = config.questions[currentQuestion];
-  if (q.secretAnswer) showHiddenMessage(q.secretAnswer);
+  musicPlaying = !musicPlaying;
 });
 
-noBtn.addEventListener("click", () => nextQuestion(2000)); // move to next question after 2s
-
-// ------------------ MUSIC ------------------
-if (config.music.enabled) {
-  bgMusic.src = config.music.musicUrl;
-  bgMusic.volume = config.music.volume;
-  musicBtn.classList.remove("hidden");
-  musicBtn.textContent = config.music.startText;
-
-  musicBtn.addEventListener("click", () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      musicBtn.textContent = config.music.stopText;
-    } else {
-      bgMusic.pause();
-      musicBtn.textContent = config.music.startText;
-    }
+// Floating Emojis
+const floatingContainer = document.getElementById("floatingEmojis");
+function createFloatingEmojis() {
+  config.floatingEmojis.forEach((emoji, i) => {
+    const span = document.createElement("span");
+    span.className = "floatingEmoji";
+    span.textContent = emoji;
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.top = Math.random() * 100 + "vh";
+    span.style.fontSize = 20 + Math.random() * 30 + "px";
+    span.style.animationDuration = 10 + Math.random() * 10 + "s";
+    floatingContainer.appendChild(span);
   });
+}
+createFloatingEmojis();
 
-  if (config.music.autoplay) bgMusic.play().catch(() => {}); // may block autoplay in browsers
+// Show current question
+function showQuestion() {
+  const q = config.questions[currentQuestion];
+  questionTitle.textContent = q.text;
+  yesBtn.textContent = q.yesBtn;
+  noBtn.textContent = q.noBtn;
+  hiddenMessage.textContent = "";
 }
 
-// ------------------ INIT ------------------
-document.title = config.pageTitle;
-showQuestion(currentQuestion);
+// Button Handlers
+yesBtn.addEventListener("click", () => {
+  const secret = config.questions[currentQuestion].secretAnswer || "";
+  hiddenMessage.textContent = secret;
+  yesBtn.disabled = true;
+  noBtn.disabled = true;
+
+  setTimeout(() => {
+    nextQuestion();
+  }, 10000); // 10 seconds to read hidden message
+});
+
+noBtn.addEventListener("click", () => {
+  yesBtn.disabled = true;
+  noBtn.disabled = true;
+  setTimeout(() => {
+    nextQuestion();
+  }, 2000); // 2 seconds delay for No
+});
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= config.questions.length) {
+    questionTitle.textContent = "🎉 Celebration 🎉";
+    hiddenMessage.textContent = "Thank you so much for gracing my life with your presence and light. 💐🌸💞💗💋🫂";
+    document.getElementById("buttons").style.display = "none";
+  } else {
+    showQuestion();
+    yesBtn.disabled = false;
+    noBtn.disabled = false;
+  }
+}
+
+// Initial load
+showQuestion();
